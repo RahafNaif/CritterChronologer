@@ -11,6 +11,7 @@ import com.udacity.jdnd.course3.critter.user.*;
 import com.udacity.jdnd.course3.critter.user.dto.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.dto.EmployeeDTO;
 import com.udacity.jdnd.course3.critter.user.dto.EmployeeRequestDTO;
+import com.udacity.jdnd.course3.critter.user.enums.EmployeeSkill;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
