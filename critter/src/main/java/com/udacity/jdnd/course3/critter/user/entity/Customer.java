@@ -1,6 +1,8 @@
 package com.udacity.jdnd.course3.critter.user.entity;
 
 import com.udacity.jdnd.course3.critter.pet.Pet;
+import com.udacity.jdnd.course3.critter.user.dto.CustomerDTO;
+import lombok.Builder;
 import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
