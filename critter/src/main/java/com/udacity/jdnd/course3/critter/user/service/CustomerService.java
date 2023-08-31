@@ -8,10 +8,13 @@ import com.udacity.jdnd.course3.critter.user.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 @AllArgsConstructor
 public class CustomerService {
     private final CustomerRepository customerRepository;
@@ -29,8 +32,7 @@ public class CustomerService {
         customer.setPets(pets);
         System.out.print(customer);
         customerRepository.save(customer);
-        //refactor to map to
-        return customerRequest;
+        return mapToCustomerDTO(customer);
     }
 
     public List<CustomerDTO> getAllCustomers() {
@@ -41,7 +43,7 @@ public class CustomerService {
         });
         return customerDTOList;
     }
-
+    //test after pet done
     public CustomerDTO getOwnerByPet(long id) {
         Customer customer = customerRepository.findByPetsId(id);
         return mapToCustomerDTO(customer);
