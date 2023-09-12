@@ -30,7 +30,6 @@ public class CustomerService {
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerRequest, customer);
         customer.setPets(pets);
-        System.out.print(customer);
         customerRepository.save(customer);
         return mapToCustomerDTO(customer);
     }
@@ -43,10 +42,26 @@ public class CustomerService {
         });
         return customerDTOList;
     }
-    //test after pet done
+
     public CustomerDTO getOwnerByPet(long id) {
         Customer customer = customerRepository.findByPetsId(id);
         return mapToCustomerDTO(customer);
+    }
+
+    public Customer getCustomer(long id) {
+        return customerRepository.findById(id).get();
+    }
+
+    public void addPet(Customer customer, Pet pet){
+        if (customer.getPets() == null) {
+            List<Pet> petList = new ArrayList<>();
+            petList.add(pet);
+            customer.setPets(petList);
+        } else {
+            customer.getPets().add(pet);
+        }
+
+        customerRepository.save(customer);
     }
 
     private CustomerDTO mapToCustomerDTO(Customer customer){
